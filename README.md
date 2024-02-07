@@ -30,7 +30,6 @@ Then you can import the class into your application:
 
 ```php
 use Templateless\Templateless;
-$templateless = new Templateless();
 ```
 
 ## 👩‍💻 Quick example
