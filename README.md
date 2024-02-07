@@ -47,27 +47,33 @@ use Templateless\Email;
 use Templateless\EmailAddress;
 use Templateless\Templateless;
 
-$content = Content::builder()
-    ->text("Hi, please **confirm your email**:")
-    ->button("Confirm Email", "https://your-company.com/signup/confirm?token=XYZ")
-    ->build();
+try {
+    $content = Content::builder()
+        ->text("Hi, please **confirm your email**:")
+        ->button("Confirm Email", "https://your-company.com/signup/confirm?token=XYZ")
+        ->build();
 
-$email = Email::builder()
-    ->to(EmailAddress::new("<YOUR_CUSTOMERS_EMAIL_ADDRESS>"))
-    ->subject("Confirm your signup 👋")
-    ->content($content)
-    ->build();
+    $email = Email::builder()
+        ->to(EmailAddress::new("<YOUR_CUSTOMERS_EMAIL_ADDRESS>"))
+        ->subject("Confirm your signup 👋")
+        ->content($content)
+        ->build();
 
-$result = Templateless::new("<YOUR_API_KEY>")
-    ->send($email);
+    $result = Templateless::new("<YOUR_API_KEY>")
+        ->send($email);
 
-var_dump($result);
+    var_dump($result);
+} catch (\Exception $e) {
+    echo $e;
+}
 ```
 
 Note:
 
 1. Get your **free API key** here: <https://app.templateless.com> ✨
 1. There are more PHP examples in the [examples](examples) folder
+
+    - For example: `php examples/simple.php`
 
 ## 🤝 Contributing
 
