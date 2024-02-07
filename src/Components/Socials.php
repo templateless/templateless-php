@@ -5,9 +5,7 @@ namespace Templateless\Components;
 use JsonSerializable;
 use Templateless\Components\ComponentId;
 
-interface Component
-{
-}
+interface Component {}
 
 enum Service: string
 {
