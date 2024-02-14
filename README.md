@@ -1,12 +1,28 @@
-# Templateless PHP
+<h1 align="center">
+  <a href="https://templateless.com/">
+    <img src="templateless.webp" alt="Templateless" width="450px">
+  </a>
+  <br />
+</h1>
+
+<p align="center">
+  <b>Ship faster by treating email as code 🚀</b> <br />
+</p>
+
+<h4 align="center">
+  <a href="https://templateless.com/">Website</a> &bull;
+  <a href="https://app.templateless.com/">Get Your API Key</a> &bull;
+  <a href="https://twitter.com/templateless">Twitter</a>
+</h4>
+
+---
 
 [![Latest Version](https://badgen.net/packagist/v/templateless/templateless)](https://packagist.org/packages/templateless/templateless)
 [![Build Status](https://badgen.net/github/checks/templateless/templateless-php?label=build&icon=github)](https://github.com/templateless/templateless-php/actions)
 [![Monthly Downloads](https://badgen.net/packagist/dm/templateless/templateless)](https://packagist.org/packages/templateless/templateless/stats)
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/Templateless)](https://twitter.com/templateless)
 
-## What is Templateless?
-
-[Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can ship faster 🚀
+[Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can focus on building your product.
 
 ## ✨ Features
 
@@ -67,7 +83,10 @@ try {
 }
 ```
 
-Note:
+> **Note**
+> 🚧 **This SDK is not stable yet.** The API might change as more features are added. Please pay attention to the [CHANGELOG](CHANGELOG.md) for breaking changes.
+
+Examples:
 
 1. Get your **free API key** here: <https://app.templateless.com> ✨
 1. There are more PHP examples in the [examples](examples) folder
