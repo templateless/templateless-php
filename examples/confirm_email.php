@@ -6,6 +6,9 @@ use Templateless\Content;
 use Templateless\Email;
 use Templateless\EmailAddress;
 use Templateless\Templateless;
+use Templateless\Collection;
+use Templateless\Components\SocialItem;
+use Templateless\Components\Service;
 
 try {
     $api_key = $env["TEMPLATELESS_API_KEY"] ?? getenv("TEMPLATELESS_API_KEY");
@@ -20,13 +23,27 @@ try {
         exit;
     }
 
+    $header = Collection::builder()
+        ->text('# ExampleApp')
+        ->build();
+
+    $footer = Collection::builder()
+        ->socials([
+            new SocialItem(Service::TWITTER, "ExampleApp"),
+            new SocialItem(Service::GITHUB, "ExampleApp"),
+        ])
+        ->link('Unsubscribe', 'https://example.com/unsubscribe?id=123')
+        ->build();
+
     $content = Content::builder()
-        ->text("Hello world")
+        ->header($header)
+        ->text('Hello world')
+        ->footer($footer)
         ->build();
 
     $email = Email::builder()
         ->to(new EmailAddress($email_address))
-        ->subject("Hello")
+        ->subject("Confirm your email")
         ->content($content)
         ->build();
 

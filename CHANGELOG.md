@@ -1,6 +1,11 @@
 # CHANGELOG
 
-**Unpublished:**
+**v0.1.0-alpha.2:**
+- `README.md` cleanup (listing of components)
+- `Image` component now requires only `src`; the other params are optional
+- `ViewInBrowser` component has changed: text is optional
+
+**v0.1.0-alpha.1:**
 - Introduced `CHANGELOG.md`
 - Introduced new services as social icons:
   - `Service::PHONE` (converts into a link with `tel:` prefix)

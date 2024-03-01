@@ -62,7 +62,7 @@ class Collection
         return $this;
     }
 
-    public function view_in_browser($text)
+    public function view_in_browser($text = '')
     {
         $this->push(new ViewInBrowser($text));
         return $this;
@@ -78,3 +78,6 @@ class Collection
         $this->components[] = $component;
     }
 }
+
+class_alias('Templateless\Collection', 'Header');
+class_alias('Templateless\Collection', 'Footer');

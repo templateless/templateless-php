@@ -4,26 +4,25 @@ namespace Templateless\Components;
 
 use JsonSerializable;
 use Templateless\Components\ComponentId;
-
-interface Component {}
+use Templateless\Components\Component;
 
 class Image implements Component, JsonSerializable
 {
     private $id;
     private $src;
-    private $alt;
+    private $url;
     private $width;
     private $height;
-    private $url;
+    private $alt;
 
-    public function __construct($src, $alt, $width, $height, $url)
+    public function __construct($src, $url = '', $width = 0, $height = 0, $alt = '')
     {
         $this->id = ComponentId::IMAGE;
         $this->src = $src;
-        $this->alt = $alt;
+        $this->url = $url;
         $this->width = $width;
         $this->height = $height;
-        $this->url = $url;
+        $this->alt = $alt;
     }
 
     public function jsonSerialize(): mixed
@@ -31,10 +30,10 @@ class Image implements Component, JsonSerializable
         return [
             'id' => $this->id,
             'src' => $this->src,
-            'alt' => $this->alt,
+            'url' => $this->url,
             'width' => $this->width,
             'height' => $this->height,
-            'url' => $this->url
+            'alt' => $this->alt
         ];
     }
 }

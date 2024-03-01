@@ -2,6 +2,7 @@
 
 namespace Templateless;
 
+use Templateless\Theme;
 use Templateless\Components\Button;
 use Templateless\Components\Image;
 use Templateless\Components\Link;
@@ -9,12 +10,6 @@ use Templateless\Components\Otp;
 use Templateless\Components\Socials;
 use Templateless\Components\Text;
 use Templateless\Components\ViewInBrowser;
-
-enum Theme: string
-{
-    case UNSTYLED = 'UNSTYLED';
-    case SIMPLE = 'SIMPLE';
-}
 
 class Content
 {
@@ -92,7 +87,7 @@ class Content
         return $this;
     }
 
-    public function view_in_browser($text)
+    public function view_in_browser($text = '')
     {
         $this->push(new ViewInBrowser($text));
         return $this;

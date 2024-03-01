@@ -4,8 +4,7 @@ namespace Templateless\Components;
 
 use JsonSerializable;
 use Templateless\Components\ComponentId;
-
-interface Component {}
+use Templateless\Components\Component;
 
 class Text implements Component, JsonSerializable
 {
