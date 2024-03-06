@@ -82,6 +82,13 @@ class Templateless
         } elseif ($statusCode === 200) {
             $responseText = $response->getBody()->getContents();
             $emailResponse = json_decode($responseText, true);
+
+            if (!empty($emailResponse['previews'])) {
+                foreach ($emailResponse['previews'] as $preview) {
+                    echo "Templateless [TEST MODE]: Emailed {$preview['email']}, preview: https://tmpl.sh/{$preview['preview']}\n";
+                }
+            }
+
             if ($emailResponse !== null && isset($emailResponse['emails'])) {
                 return new EmailResponse($emailResponse['emails']);
             } else {
