@@ -86,10 +86,8 @@ try {
         ->content($content)
         ->build();
 
-    $result = Templateless::new("<YOUR_API_KEY>")
+    Templateless::new("<YOUR_API_KEY>")
         ->send($email);
-
-    var_dump($result);
 } catch (\Exception $e) {
     echo $e;
 }
