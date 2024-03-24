@@ -162,8 +162,7 @@ Link component adds an anchor tag. This is the same as a text component with the
 
 ```php
 Content::builder()
-  ->link("Confirm Email", "https://example.com/confirm?token=XYZ") // or...
-  ->text("[Confirm Email](https://example.com/confirm?token=XYZ)")
+  ->link("Confirm Email", "https://example.com/confirm?token=XYZ")
   ->build();
 ```
 
@@ -252,6 +251,8 @@ Content::builder()
     new SocialItem(Service::SNAPCHAT, "Username"),
     new SocialItem(Service::THREADS, "Username"),
     new SocialItem(Service::TELEGRAM, "Username"),
+    new SocialItem(Service::MASTODON, "@Username@example.com"),
+    new SocialItem(Service::RSS, "https://example.com/blog"),
   ])
   ->build();
 ```
@@ -270,6 +271,92 @@ Content::builder()
   ->view_in_browser(Some("Read Email in Browser".to_string()))
   ->build();
 ```
+
+</details>
+<details><summary>Store Badges</summary>
+
+Link to your mobile apps via store badges:
+
+```php
+Content::builder()
+  ->store_badges([
+    new StoreBadgeItem(StoreBadge::APP_STORE, "https://apps.apple.com/us/app/example/id1234567890"),
+    new StoreBadgeItem(StoreBadge::GOOGLE_PLAY, "https://play.google.com/store/apps/details?id=com.example"),
+    new StoreBadgeItem(StoreBadge::MICROSOFT_STORE, "https://apps.microsoft.com/detail/example"),
+  ])
+  ->build();
+```
+
+</details>
+<details><summary>QR Code</summary>
+
+You can also generate QR codes on the fly. They will be shown as images inside the email.
+
+Here are all the supported data types:
+
+```php
+// url
+Content::builder()
+  ->qr_code("https://example.com")
+  ->build();
+
+// email
+Content::builder()
+  ->component(QrCode::email("user@example.com"))
+  ->build();
+
+// phone
+Content::builder()
+  ->component(QrCode::phone("123-456-7890"))
+  ->build();
+
+// sms / text message
+Content::builder()
+  ->component(QrCode::sms("123-456-7890"))
+  ->build();
+
+// geo coordinates
+Content::builder()
+  ->component(QrCode::coordinates(37.773972, -122.431297))
+  ->build();
+
+// crypto address (for now only Bitcoin and Ethereum are supported)
+Content::builder()
+  ->component(QrCode::cryptocurrencyAddress(Cryptocurrency::BITCOIN, "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"))
+  ->build();
+
+// you can also encode any binary data
+Content::builder()
+  ->component(new QrCode(implode(array_map(function($byte) { return chr($byte); }, [1, 2, 3]))))
+  ->build();
+```
+
+</details>
+<details><summary>Signature</summary>
+
+Generated signatures can be added to your emails to give a bit of a personal touch. This will embed an image with your custom text using one of several available fonts:
+
+```php
+// signature with a default font
+Content::builder()
+  ->signature("John Smith")
+  ->build();
+
+// signature with a custom font
+Content::builder()
+  ->component("John Smith", SignatureFont::REENIE_BEANIE)
+  ->build();
+```
+
+These are the available fonts:
+
+- `SignatureFont::REENIE_BEANIE` [preview →](https://fonts.google.com/specimen/Reenie+Beanie)
+- `SignatureFont::MEOW_SCRIPT` [preview →](https://fonts.google.com/specimen/Meow+Script)
+- `SignatureFont::CAVEAT` [preview →](https://fonts.google.com/specimen/Caveat)
+- `SignatureFont::ZEYADA` [preview →](https://fonts.google.com/specimen/Zeyada)
+- `SignatureFont::PETEMOSS` [preview →](https://fonts.google.com/specimen/Petemoss)
+
+Signature should not exceed 64 characters. Only alphanumeric characters and most common symbols are allowed.
 
 </details>
 

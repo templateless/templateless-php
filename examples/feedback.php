@@ -7,6 +7,7 @@ use Templateless\Email;
 use Templateless\EmailAddress;
 use Templateless\Templateless;
 use Templateless\Collection;
+use Templateless\Theme;
 use Templateless\Components\SocialItem;
 use Templateless\Components\Service;
 
@@ -24,33 +25,37 @@ try {
     }
 
     $header = Collection::builder()
-        ->text('# ExampleApp')
+        ->image('https://templateless.net/myco.webp', null, 100, null, 'MyCo')
         ->build();
 
     $footer = Collection::builder()
         ->socials([
-            new SocialItem(Service::TWITTER, "ExampleApp"),
-            new SocialItem(Service::GITHUB, "ExampleApp"),
+            new SocialItem(Service::TWITTER, 'MyCo'),
+            new SocialItem(Service::GITHUB, 'MyCo'),
         ])
-        ->link('Unsubscribe', 'https://example.com/unsubscribe?id=123')
         ->build();
 
     $content = Content::builder()
+        ->theme(Theme::SIMPLE)
         ->header($header)
-        ->text('Hello world')
+        ->text("Hey Alex,")
+        ->text("I'm Jamie, founder of **MyCo**.")
+        ->text("Could you spare a moment to reply to this email with your thoughts on our service? Your feedback is invaluable and directly influences our improvements.")
+        ->text("When you hit reply, your email will go directly to me, and I read each and every one.")
+        ->text("Thanks for your support,")
+        ->signature("Jamie Parker")
+        ->text("Jamie Parker\n\nFounder @ [MyCo](https://example.com)")
         ->footer($footer)
         ->build();
 
     $email = Email::builder()
         ->to(new EmailAddress($email_address))
-        ->subject("Confirm your email")
+        ->subject("Thoughts on service?")
         ->content($content)
         ->build();
 
     $templateless = new Templateless($api_key);
-    $result = $templateless->send($email);
-
-    var_dump($result);
+    $templateless->send($email);
 } catch (\Exception $e) {
     echo $e;
 }

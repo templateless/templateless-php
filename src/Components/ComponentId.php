@@ -12,4 +12,7 @@ enum ComponentId: string
     case SOCIALS = 'SOCIALS';
     case TEXT = 'TEXT';
     case VIEW_IN_BROWSER = 'VIEW_IN_BROWSER';
+    case STORE_BADGES = 'STORE_BADGES';
+    case QR_CODE = 'QR_CODE';
+    case SIGNATURE = 'SIGNATURE';
 }

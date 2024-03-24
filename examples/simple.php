@@ -20,20 +20,18 @@ try {
         exit;
     }
 
-    $content = Content::builder()
-        ->text("Hello world")
-        ->build();
-
     $email = Email::builder()
         ->to(new EmailAddress($email_address))
         ->subject("Hello")
-        ->content($content)
+        ->content(
+            Content::builder()
+            ->text("Hello world")
+            ->build()
+        )
         ->build();
 
     $templateless = new Templateless($api_key);
-    $result = $templateless->send($email);
-
-    var_dump($result);
+    $templateless->send($email);
 } catch (\Exception $e) {
     echo $e;
 }

@@ -10,6 +10,9 @@ use Templateless\Components\Otp;
 use Templateless\Components\Socials;
 use Templateless\Components\Text;
 use Templateless\Components\ViewInBrowser;
+use Templateless\Components\QrCode;
+use Templateless\Components\StoreBadges;
+use Templateless\Components\Signature;
 
 class Content
 {
@@ -90,6 +93,30 @@ class Content
     public function view_in_browser($text = '')
     {
         $this->push(new ViewInBrowser($text));
+        return $this;
+    }
+
+    public function qr_code($url)
+    {
+        $this->push(QrCode::url($url));
+        return $this;
+    }
+
+    public function store_badges($data)
+    {
+        $this->push(new StoreBadges($data));
+        return $this;
+    }
+
+    public function signature($text, $font = null)
+    {
+        $this->push(new Signature($text, $font));
+        return $this;
+    }
+
+    public function component($c)
+    {
+        $this->push($c);
         return $this;
     }
 

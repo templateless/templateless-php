@@ -4,21 +4,21 @@ namespace Templateless\Components;
 
 use JsonSerializable;
 
-class SocialItem implements JsonSerializable
+class StoreBadgeItem implements JsonSerializable
 {
-    private $service;
+    private $key;
     private $value;
 
-    public function __construct($service, $value)
+    public function __construct($key, $value)
     {
-        $this->service = $service;
+        $this->key = $key;
         $this->value = $value;
     }
 
     public function jsonSerialize(): mixed
     {
         return [
-            'key' => $this->service,
+            'key' => $this->key,
             'value' => $this->value
         ];
     }

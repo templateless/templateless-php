@@ -20,4 +20,6 @@ enum Service: string
     case SNAPCHAT = 'SNAPCHAT';
     case THREADS = 'THREADS';
     case TELEGRAM = 'TELEGRAM';
+    case MASTODON = 'MASTODON';
+    case RSS = 'RSS';
 }
